@@ -6,33 +6,35 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            background-image: url('pic0.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            backdrop-filter: blur(4px);
         }
 
         .container {
             width: 80%;
             margin: auto;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px;
             border-radius: 15px;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 30px;
         }
 
         h1 {
             text-align: center;
-            color: #2e7d32;
             margin-bottom: 40px;
         }
 
         .recipe {
-            background: #fff;
+            background: white;
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .recipe img {
@@ -49,28 +51,47 @@
         }
 
         h2 {
-            color: #388e3c;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        ul, ol {
-            margin-left: 20px;
+            color: #2e8b57;
         }
     </style>
+
+    <script>
+        // 🔵 Recettes AMERICAN & ITALIAN
+        const recipes = {
+            american: {
+                ingredients: ["Poulet croustillant", "Laitue", "Tomates", "Sauce ranch"],
+                measures: ["Couper le poulet", "Mélanger avec la salade", "Ajouter la sauce"]
+            },
+            italian: {
+                ingredients: ["Poulet grillé", "Roquette", "Olives", "Vinaigrette italienne"],
+                measures: ["Griller le poulet", "Ajouter roquette + olives", "Verser la vinaigrette"]
+            }
+        };
+
+        // 🔵 Fonction mise à jour dynamique (pour chaque semaine)
+        function updateRecipe(week) {
+            const choice = document.getElementById("versionChoice_" + week).value;
+
+            document.getElementById("ingredientsList_" + week).innerHTML =
+                recipes[choice].ingredients.map(i => `<li>${i}</li>`).join('');
+
+            document.getElementById("measuresList_" + week).innerHTML =
+                recipes[choice].measures.map(m => `<li>${m}</li>`).join('');
+        }
+    </script>
 </head>
 
 <body>
 
 <div class="container">
-    <h1>GREENHARVEST – Recettes Hebdomadaires</h1>
 
-    <!-- ====================== -->
-    <!--       WEEK 1           -->
-    <!-- ====================== -->
+    <h1>GREENHARVEST – Recettes hebdomadaires</h1>
+
+    <!-- 🔵 SEMAINE 1 -->
     <div class="recipe">
         <h2>Semaine 1 – Classic Crispy Chicken Salad</h2>
-        <img src="pic0.png" alt="Week 1 Salad">
+
+        <img src="pic0.png">
 
         <label><b>Choisir une version :</b></label><br>
         <select id="versionChoice_1" onchange="updateRecipe(1)">
@@ -85,12 +106,13 @@
         <ol id="measuresList_1"></ol>
     </div>
 
-    <!-- ====================== -->
-    <!--       WEEK 2           -->
-    <!-- ====================== -->
+    <script>updateRecipe(1);</script>
+
+    <!-- 🔵 SEMAINE 2 -->
     <div class="recipe">
-        <h2>Semaine 2 – Bol Énergétique Végétalien</h2>
-        <img src="pic1.png" alt="Week 2 Salad">
+        <h2>Semaine 2 – Classic Crispy Chicken Salad</h2>
+
+        <img src="pic0.png">
 
         <label><b>Choisir une version :</b></label><br>
         <select id="versionChoice_2" onchange="updateRecipe(2)">
@@ -105,12 +127,13 @@
         <ol id="measuresList_2"></ol>
     </div>
 
-    <!-- ====================== -->
-    <!--       WEEK 3           -->
-    <!-- ====================== -->
+    <script>updateRecipe(2);</script>
+
+    <!-- 🔵 SEMAINE 3 -->
     <div class="recipe">
-        <h2>Semaine 3 – Bocal Arc-en-Ciel des Enfants</h2>
-        <img src="pic2.png" alt="Week 3 Salad">
+        <h2>Semaine 3 – Classic Crispy Chicken Salad</h2>
+
+        <img src="pic0.png">
 
         <label><b>Choisir une version :</b></label><br>
         <select id="versionChoice_3" onchange="updateRecipe(3)">
@@ -125,65 +148,9 @@
         <ol id="measuresList_3"></ol>
     </div>
 
+    <script>updateRecipe(3);</script>
+
 </div>
-
-<script>
-    // =========================
-    // Recipes Data
-    // =========================
-    const recipes_week1 = {
-        american: {
-            ingredients: ["Poulet croustillant", "Laitue", "Tomates", "Sauce ranch"],
-            measures: ["Couper le poulet", "Mélanger avec la salade", "Ajouter la sauce"]
-        },
-        italian: {
-            ingredients: ["Poulet grillé", "Roquette", "Olives", "Vinaigrette italienne"],
-            measures: ["Griller le poulet", "Ajouter roquette + olives", "Verser la vinaigrette"]
-        }
-    };
-
-    const recipes_week2 = {
-        american: {
-            ingredients: ["Poulet strips", "Maïs", "Avocat", "Sauce BBQ"],
-            measures: ["Cuire le poulet", "Ajouter légumes", "Ajouter la sauce BBQ"]
-        },
-        italian: {
-            ingredients: ["Poulet", "Pâtes", "Basilic", "Parmesan"],
-            measures: ["Cuire les pâtes", "Ajouter poulet", "Ajouter basilic + parmesan"]
-        }
-    };
-
-    const recipes_week3 = {
-        american: {
-            ingredients: ["Poulet frit", "Carottes", "Chou", "Moutarde au miel"],
-            measures: ["Préparer légumes", "Ajouter poulet", "Mélanger avec la sauce"]
-        },
-        italian: {
-            ingredients: ["Poulet", "Mozzarella", "Tomates", "Pesto"],
-            measures: ["Trancher mozzarella", "Ajouter tomates", "Ajouter pesto"]
-        }
-    };
-
-    function updateRecipe(week) {
-        const choice = document.getElementById("versionChoice_" + week).value;
-
-        let data;
-        if (week === 1) data = recipes_week1;
-        if (week === 2) data = recipes_week2;
-        if (week === 3) data = recipes_week3;
-
-        document.getElementById("ingredientsList_" + week).innerHTML =
-            data[choice].ingredients.map(i => `<li>${i}</li>`).join('');
-
-        document.getElementById("measuresList_" + week).innerHTML =
-            data[choice].measures.map(m => `<li>${m}</li>`).join('');
-    }
-
-    // Initialize all weeks
-    updateRecipe(1);
-    updateRecipe(2);
-    updateRecipe(3);
-</script>
 
 </body>
 </html>
