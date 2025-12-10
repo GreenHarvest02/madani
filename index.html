@@ -2,163 +2,155 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GREENHARVEST – Recettes</title>
-
+    <title>GreenHarvest – Recettes hebdomadaires</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background-color: #f7f7f7;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-image: url('pic0.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             margin: 0;
+            padding: 0;
+            backdrop-filter: blur(4px);
         }
 
         .container {
-            max-width: 800px;
+            width: 80%;
             margin: auto;
-            background: #fff;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-top: 30px;
         }
 
-        h1 { text-align: center; color: #2e7d32; }
-        h2 { color: #388e3c; text-align: center; margin-top: 20px; }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .recipe {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
 
         .recipe img {
+            width: 250px;
             display: block;
-            margin: 15px auto;
-            max-width: 300px;
-            width: 90%;
+            margin: 0 auto 15px auto;
             border-radius: 10px;
         }
 
         select {
-            width: 100%;
-            padding: 12px;
-            margin: 20px 0;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 8px;
+            width: 250px;
+            margin-bottom: 20px;
         }
 
-        .recipe { margin-bottom: 35px; }
-        ul, ol { margin-left: 20px; }
+        h2 {
+            color: #2e8b57;
+        }
     </style>
+
+    <script>
+        // 🔵 Recettes AMERICAN & ITALIAN
+        const recipes = {
+            american: {
+                ingredients: ["Poulet croustillant", "Laitue", "Tomates", "Sauce ranch"],
+                measures: ["Couper le poulet", "Mélanger avec la salade", "Ajouter la sauce"]
+            },
+            italian: {
+                ingredients: ["Poulet grillé", "Roquette", "Olives", "Vinaigrette italienne"],
+                measures: ["Griller le poulet", "Ajouter roquette + olives", "Verser la vinaigrette"]
+            }
+        };
+
+        // 🔵 Fonction mise à jour dynamique (pour chaque semaine)
+        function updateRecipe(week) {
+            const choice = document.getElementById("versionChoice_" + week).value;
+
+            document.getElementById("ingredientsList_" + week).innerHTML =
+                recipes[choice].ingredients.map(i => `<li>${i}</li>`).join('');
+
+            document.getElementById("measuresList_" + week).innerHTML =
+                recipes[choice].measures.map(m => `<li>${m}</li>`).join('');
+        }
+    </script>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>GREENHARVEST – Recettes Hebdomadaires</h1>
+    <h1>GREENHARVEST – Recettes hebdomadaires</h1>
 
-    <!-- ====================== -->
-    <!--       SECTEUR 1       -->
-    <!-- ====================== -->
-    <h2>Semaine 1 – Crispy Chicken Salad</h2>
-
-    <select id="selector" onchange="showRecipe()">
-        <option value="">— Choisir une version —</option>
-        <option value="american">American Version</option>
-        <option value="italian">Italian Version</option>
-    </select>
-
-    <!-- AMERICAN -->
-    <div id="american" class="recipe" style="display:none;">
-        <img src="american.png" alt="">
-        <h3>Ingrédients :</h3>
-        <ul>
-            <li>Poulet croustillant US</li>
-            <li>Laitue iceberg</li>
-            <li>Tomates cerises</li>
-            <li>Cheddar</li>
-            <li>Croûtons</li>
-            <li>Sauce Ranch</li>
-        </ul>
-        <h3>Mesures :</h3>
-        <ol>
-            <li>Mélanger la salade + tomates.</li>
-            <li>Ajouter cheddar + poulet.</li>
-            <li>Croûtons.</li>
-            <li>Ajouter sauce Ranch.</li>
-        </ol>
-    </div>
-
-    <!-- ITALIAN -->
-    <div id="italian" class="recipe" style="display:none;">
-        <img src="italian.png" alt="">
-        <h3>Ingrédients :</h3>
-        <ul>
-            <li>Poulet croustillant italien</li>
-            <li>Roquette</li>
-            <li>Tomates séchées</li>
-            <li>Mozzarella</li>
-            <li>Basilic</li>
-            <li>Sauce balsamique</li>
-        </ul>
-        <h3>Mesures :</h3>
-        <ol>
-            <li>Mélanger roquette + mozzarella.</li>
-            <li>Ajouter poulet.</li>
-            <li>Ajouter basilic.</li>
-            <li>Sauce balsamique.</li>
-        </ol>
-    </div>
-
-
-    <!-- ====================== -->
-    <!--       SECTEUR 2       -->
-    <!-- ====================== -->
-
+    <!-- 🔵 SEMAINE 1 -->
     <div class="recipe">
-        <h2>Semaine 2 – Bol Énergétique Végétalien</h2>
-        <img src="pic1.png" alt="">
+        <h2>Semaine 1 – Classic Crispy Chicken Salad</h2>
+
+        <img src="pic0.png">
+
+        <label><b>Choisir une version :</b></label><br>
+        <select id="versionChoice_1" onchange="updateRecipe(1)">
+            <option value="american">🇺🇸 American Style</option>
+            <option value="italian">🇮🇹 Italian Style</option>
+        </select>
+
         <h3>Ingrédients :</h3>
-        <ul>
-            <li>...</li>
-            <li>...</li>
-        </ul>
+        <ul id="ingredientsList_1"></ul>
+
         <h3>Mesures :</h3>
-        <ol>
-            <li>...</li>
-            <li>...</li>
-        </ol>
+        <ol id="measuresList_1"></ol>
     </div>
 
+    <script>updateRecipe(1);</script>
 
-    <!-- ====================== -->
-    <!--       SECTEUR 3       -->
-    <!-- ====================== -->
-
+    <!-- 🔵 SEMAINE 2 -->
     <div class="recipe">
-        <h2>Semaine 3 – Le Bocal Arc-en-Ciel</h2>
-        <img src="pic2.png" alt="">
+        <h2>Semaine 2 – Classic Crispy Chicken Salad</h2>
+
+        <img src="pic0.png">
+
+        <label><b>Choisir une version :</b></label><br>
+        <select id="versionChoice_2" onchange="updateRecipe(2)">
+            <option value="american">🇺🇸 American Style</option>
+            <option value="italian">🇮🇹 Italian Style</option>
+        </select>
+
         <h3>Ingrédients :</h3>
-        <ul>
-            <li>...</li>
-            <li>...</li>
-        </ul>
+        <ul id="ingredientsList_2"></ul>
+
         <h3>Mesures :</h3>
-        <ol>
-            <li>...</li>
-            <li>...</li>
-        </ol>
+        <ol id="measuresList_2"></ol>
     </div>
+
+    <script>updateRecipe(2);</script>
+
+    <!-- 🔵 SEMAINE 3 -->
+    <div class="recipe">
+        <h2>Semaine 3 – Classic Crispy Chicken Salad</h2>
+
+        <img src="pic0.png">
+
+        <label><b>Choisir une version :</b></label><br>
+        <select id="versionChoice_3" onchange="updateRecipe(3)">
+            <option value="american">🇺🇸 American Style</option>
+            <option value="italian">🇮🇹 Italian Style</option>
+        </select>
+
+        <h3>Ingrédients :</h3>
+        <ul id="ingredientsList_3"></ul>
+
+        <h3>Mesures :</h3>
+        <ol id="measuresList_3"></ol>
+    </div>
+
+    <script>updateRecipe(3);</script>
 
 </div>
-
-<script>
-function showRecipe() {
-    let v = document.getElementById("selector").value;
-
-    document.getElementById("american").style.display = "none";
-    document.getElementById("italian").style.display = "none";
-
-    if (v) {
-        document.getElementById(v).style.display = "block";
-    }
-}
-</script>
 
 </body>
 </html>
