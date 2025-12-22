@@ -56,6 +56,39 @@
         </div>
     </section>
 
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-img" src="" alt="Recipe Image">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modal-title">Recipe Title</h2>
+                    <div class="recipe-meta modal-meta">
+                        <span><i data-lucide="clock"></i> <span id="modal-time">10 min</span></span>
+                        <span><i data-lucide="flame"></i> <span id="modal-cal">300 kcal</span></span>
+                    </div>
+
+                    <div class="modal-section">
+                        <h4>Ingredients</h4>
+                        <ul id="modal-ingredients" class="ing-list">
+                            <!-- Injected -->
+                        </ul>
+                    </div>
+
+                    <div class="modal-section">
+                        <h4>Instructions</h4>
+                        <ol id="modal-instructions" class="inst-list">
+                            <!-- Injected -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">Harvest<span>Bottle</span>.</div>

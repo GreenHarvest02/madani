@@ -5,7 +5,24 @@ const recipes = [
         category: "italian",
         image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600",
         calories: "350 kcal",
-        time: "10 min"
+        time: "10 min",
+        ingredients: [
+            "1/2 cup Cannellini beans, rinsed",
+            "1 cup Cherry tomatoes, halved",
+            "1/2 Cucumber, diced",
+            "1/4 Red onion, thinly sliced",
+            "2 cups Mixed greens (arugula/spinach)",
+            "2 tbsp Balsamic Vinaigrette",
+            "1 tbsp Pine nuts"
+        ],
+        instructions: [
+            "Pour dressing into the bottom of the Harvest Bottle.",
+            "Layer the heavier ingredients: beans, then cucumbers and onions.",
+            "Add the tomatoes.",
+            "Pack the mixed greens on top to keep them crisp.",
+            "Sprinkle pine nuts before sealing.",
+            "Shake well before eating!"
+        ]
     },
     {
         id: 2,
@@ -13,7 +30,22 @@ const recipes = [
         category: "italian",
         image: "https://images.unsplash.com/photo-1529312266912-b33cf6227e24?auto=format&fit=crop&q=80&w=600",
         calories: "280 kcal",
-        time: "5 min"
+        time: "5 min",
+        ingredients: [
+            "1 cup Cherry tomatoes",
+            "1 cup Mozzarella pearls",
+            "1/2 cup Fresh basil leaves",
+            "2 tbsp Extra virgin olive oil",
+            "1 tbsp Balsamic glaze",
+            "Salt and pepper to taste"
+        ],
+        instructions: [
+            "Whisk olive oil, balsamic glaze, salt, and pepper in a small bowl.",
+            "Pour the dressing into the bottom of the bottle.",
+            "Add tomatoes, then mozzarella pearls.",
+            "Top with fresh basil leaves (tear them for more flavor).",
+            "Seal and refrigerate until lunch."
+        ]
     },
     {
         id: 3,
@@ -21,7 +53,22 @@ const recipes = [
         category: "italian",
         image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&q=80&w=600",
         calories: "450 kcal",
-        time: "15 min"
+        time: "15 min",
+        ingredients: [
+            "1 cup Fusilli pasta, cooked and cooled",
+            "3 tbsp Pesto sauce",
+            "1/2 cup Cherry tomatoes",
+            "1/4 cup Parmesan cheese, shaved",
+            "1 cup Spinach",
+            "1 tbsp Toasted walnuts"
+        ],
+        instructions: [
+            "Mix the cooked pasta with 1 tbsp of pesto to prevent sticking.",
+            "Place remaining pesto at the bottom.",
+            "Layer pasta, tomatoes, and walnuts.",
+            "Add spinach and top with parmesan cheese.",
+            "Enjoy cold or at room temperature."
+        ]
     },
     {
         id: 4,
@@ -29,7 +76,23 @@ const recipes = [
         category: "american",
         image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=600",
         calories: "400 kcal",
-        time: "12 min"
+        time: "12 min",
+        ingredients: [
+            "1/2 cup Grilled chicken breast, cubed",
+            "2 Hard-boiled eggs, sliced",
+            "1/4 cup Blue cheese crumbles",
+            "2 slices Bacon, crumbled",
+            "1/2 Avocado, diced",
+            "2 cups Romaine lettuce",
+            "2 tbsp Ranch dressing"
+        ],
+        instructions: [
+            "Pour Ranch dressing at the bottom.",
+            "Layer chicken, bacon, and blue cheese.",
+            "Add eggs and avocado (squeeze lemon on avocado to prevent browning).",
+            "Fill the rest with romaine lettuce.",
+            "Shake vigorously to mix before eating."
+        ]
     },
     {
         id: 5,
@@ -37,7 +100,23 @@ const recipes = [
         category: "american",
         image: "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?auto=format&fit=crop&q=80&w=600",
         calories: "500 kcal",
-        time: "20 min"
+        time: "20 min",
+        ingredients: [
+            "1 cup Grilled chicken strips",
+            "1/2 cup Black beans, rinsed",
+            "1/2 cup Corn kernels",
+            "1/2 cup Cheddar cheese",
+            "2 cups Iceberg lettuce",
+            "Tortilla strips for topping",
+            "3 tbsp Spicy Ranch dressing"
+        ],
+        instructions: [
+            "Add Spicy Ranch to the bottom.",
+            "Layer beans, corn, and chicken.",
+            "Add cheddar cheese.",
+            "Pack with lettuce.",
+            "Keep tortilla strips in a separate small bag or on top to stay crunchy."
+        ]
     },
     {
         id: 6,
@@ -45,7 +124,22 @@ const recipes = [
         category: "american",
         image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600",
         calories: "380 kcal",
-        time: "15 min"
+        time: "15 min",
+        ingredients: [
+            "1/2 cup Quinoa, cooked",
+            "1/2 cup Black beans",
+            "1/2 Red bell pepper, diced",
+            "1/4 cup Cilantro, chopped",
+            "1/2 Avocado, cubed",
+            "2 tbsp Lime vinaigrette"
+        ],
+        instructions: [
+            "Pour lime vinaigrette at the bottom.",
+            "Layer beans, quinoa, and peppers.",
+            "Add avocado and cilantro.",
+            "You can add mixed greens if desired.",
+            "Shake correctly to mix flavors."
+        ]
     }
 ];
 
@@ -73,6 +167,7 @@ function renderRecipes(filter = 'italian') {
                     <span><i data-lucide="clock"></i> ${recipe.time}</span>
                     <span><i data-lucide="flame"></i> ${recipe.calories}</span>
                 </div>
+                <button class="btn-view-recipe" onclick="openRecipeModal(${recipe.id})">View Recipe</button>
             </div>
         `;
 
@@ -84,6 +179,44 @@ function renderRecipes(filter = 'italian') {
         lucide.createIcons();
     }
 }
+
+// Modal Logic
+const modal = document.getElementById('recipe-modal');
+const closeModalBtn = document.querySelector('.close-modal');
+
+window.openRecipeModal = function (id) {
+    const recipe = recipes.find(r => r.id === id);
+    if (!recipe) return;
+
+    document.getElementById('modal-title').textContent = recipe.title;
+    document.getElementById('modal-img').src = recipe.image;
+    document.getElementById('modal-time').textContent = recipe.time;
+    document.getElementById('modal-cal').textContent = recipe.calories;
+
+    const ingredientsList = document.getElementById('modal-ingredients');
+    ingredientsList.innerHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
+
+    const instructionsList = document.getElementById('modal-instructions');
+    instructionsList.innerHTML = recipe.instructions.map(inst => `<li>${inst}</li>`).join('');
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+}
+
+// Close on outside click
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
 
 // Event Listeners
 if (tabs.length > 0) {
