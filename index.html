@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harvest Bottle | Freshness on the Go</title>
-    <meta name="description" content="The ultimate bottle for your daily harvest. Eat fresh, healthy food at work or on the go.">
-    
+    <meta name="description"
+        content="The ultimate bottle for your daily harvest. Eat fresh, healthy food at work or on the go.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
     <!-- Navigation -->
     <nav class="navbarglass">
         <div class="container nav-container">
-            <a href="#" class="logo">Harvest<span>Bottle</span>.</a>
+            <a href="index.html" class="logo">Harvest<span>Bottle</span>.</a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#recipes">Harvest Recipes</a></li>
-                <li><a href="#buy" class="btn-nav">Buy on Amazon</a></li>
+                <li><a href="index.html" class="active-link">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="recipes.html">Harvest Recipes</a></li>
+                <li><a href="buy.html" class="btn-nav">Buy on Amazon</a></li>
             </ul>
         </div>
     </nav>
@@ -37,10 +42,11 @@
             <div class="hero-content">
                 <span class="badge">New Release</span>
                 <h1>Nature's Freshness, <br><em>In Your Pocket.</em></h1>
-                <p>The premium bottle designed for your daily harvest. Pack fresh salads, fruits, and meals for work or adventure. Eat clean, anywhere.</p>
+                <p>The premium bottle designed for your daily harvest. Pack fresh salads, fruits, and meals for work or
+                    adventure. Eat clean, anywhere.</p>
                 <div class="hero-btns">
-                    <a href="#buy" class="btn btn-primary">Shop on Amazon <i data-lucide="arrow-right"></i></a>
-                    <a href="#recipes" class="btn btn-secondary">Explore Recipes</a>
+                    <a href="buy.html" class="btn btn-primary">Shop on Amazon <i data-lucide="arrow-right"></i></a>
+                    <a href="recipes.html" class="btn btn-secondary">Explore Recipes</a>
                 </div>
                 <div class="trust-badges">
                     <span><i data-lucide="leaf"></i> Eco-Friendly</span>
@@ -55,77 +61,6 @@
         </div>
     </header>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Designed for <em>Modern Life</em></h2>
-                <p>More than just a bottle. It's a lifestyle statement.</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon-box"><i data-lucide="utensils"></i></div>
-                    <h3>Eat Anywhere</h3>
-                    <p>Perfect for office lunches, hiking trips, or post-gym refueling. Your food stays crisp and fresh.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon-box"><i data-lucide="droplet"></i></div>
-                    <h3>Leak Proof</h3>
-                    <p>Advanced sealing technology ensures your dressing stays in the bottle, not on your bag.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon-box"><i data-lucide="recycle"></i></div>
-                    <h3>Sustainable</h3>
-                    <p>Ditch single-use plastics. Crafted from durable, eco-conscious materials.</p>
-                </div>
-            </div>
-
-            <!-- Showcase with second image -->
-            <div class="feature-showcase">
-                <div class="showcase-img">
-                    <img src="pic1.png" alt="Harvest Bottle Lifestyle">
-                </div>
-                <div class="showcase-text">
-                    <h3>Versatility at its Core</h3>
-                    <ul>
-                        <li><i data-lucide="check-circle"></i> Wide mouth for easy filling</li>
-                        <li><i data-lucide="check-circle"></i> Dishwasher safe design</li>
-                        <li><i data-lucide="check-circle"></i> Compact fits in most cup holders</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recipes Section -->
-    <section id="recipes" class="recipes">
-        <div class="container">
-            <div class="section-header">
-                <h2>The <em>Harvest</em> Cookbook</h2>
-                <p>Curated recipes to get the most out of your bottle.</p>
-            </div>
-            
-            <div class="recipe-tabs">
-                <button class="tab-btn active" data-category="italian">🇮🇹 Italian Harvest</button>
-                <button class="tab-btn" data-category="american">🇺🇸 American Classic</button>
-            </div>
-
-            <div id="recipe-grid" class="recipe-grid">
-                <!-- Recipes injected via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="buy" class="cta-section">
-        <div class="container cta-box">
-            <h2>Ready to Upgrade Your Lunch?</h2>
-            <p>Join thousands of happy harvesters today.</p>
-            <button class="btn btn-white">Buy Now on Amazon</button>
-        </div>
-    </section>
-
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">Harvest<span>Bottle</span>.</div>
@@ -133,9 +68,9 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
         lucide.createIcons();
     </script>
 </body>
+
 </html>

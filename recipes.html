@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes | Harvest Bottle</title>
+    <meta name="description" content="Healthy and delicious recipes for your Harvest Bottle.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbarglass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Harvest<span>Bottle</span>.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="recipes.html" class="active-link">Harvest Recipes</a></li>
+                <li><a href="buy.html" class="btn-nav">Buy on Amazon</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="padding-top: 100px;"></div>
+
+    <!-- Recipes Section -->
+    <section id="recipes" class="recipes">
+        <div class="container">
+            <div class="section-header">
+                <h2>The <em>Harvest</em> Cookbook</h2>
+                <p>Curated recipes to get the most out of your bottle.</p>
+            </div>
+
+            <div class="recipe-tabs">
+                <button class="tab-btn active" data-category="italian">🇮🇹 Italian Harvest</button>
+                <button class="tab-btn" data-category="american">🇺🇸 American Classic</button>
+            </div>
+
+            <div id="recipe-grid" class="recipe-grid">
+                <!-- Recipes injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Harvest<span>Bottle</span>.</div>
+            <p>&copy; 2025 Harvest Bottle. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

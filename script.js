@@ -53,15 +53,17 @@ const recipeGrid = document.getElementById('recipe-grid');
 const tabs = document.querySelectorAll('.tab-btn');
 
 function renderRecipes(filter = 'italian') {
+    if (!recipeGrid) return; // Guard clause
+
     recipeGrid.innerHTML = '';
-    
+
     const filteredRecipes = recipes.filter(recipe => recipe.category === filter);
-    
+
     filteredRecipes.forEach((recipe, index) => {
         const card = document.createElement('div');
         card.className = 'recipe-card';
         card.style.animationDelay = `${index * 0.1}s`;
-        
+
         card.innerHTML = `
             <div class="recipe-img" style="background-image: url('${recipe.image}')"></div>
             <div class="recipe-content">
@@ -73,10 +75,10 @@ function renderRecipes(filter = 'italian') {
                 </div>
             </div>
         `;
-        
+
         recipeGrid.appendChild(card);
     });
-    
+
     // Re-initialize icons for new elements
     if (window.lucide) {
         lucide.createIcons();
@@ -84,19 +86,23 @@ function renderRecipes(filter = 'italian') {
 }
 
 // Event Listeners
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // Remove active class from all
-        tabs.forEach(t => t.classList.remove('active'));
-        // Add active to clicked
-        tab.classList.add('active');
-        
-        const category = tab.getAttribute('data-category');
-        renderRecipes(category);
+if (tabs.length > 0) {
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all
+            tabs.forEach(t => t.classList.remove('active'));
+            // Add active to clicked
+            tab.classList.add('active');
+
+            const category = tab.getAttribute('data-category');
+            renderRecipes(category);
+        });
     });
-});
+}
 
 // Initial Render
 document.addEventListener('DOMContentLoaded', () => {
-    renderRecipes('italian');
+    if (recipeGrid) {
+        renderRecipes('italian');
+    }
 });
