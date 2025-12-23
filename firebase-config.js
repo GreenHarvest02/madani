@@ -35,36 +35,68 @@ if (isConfigured && typeof firebase !== 'undefined') {
     // 1. Mock Auth
     class MockAuth {
         constructor() {
-            this.user = JSON.parse(localStorage.getItem('mockUser')) || null;
+            this.currentUser = JSON.parse(localStorage.getItem('mockCurrentSession')) || null;
             this.listeners = [];
+
+            // Seed default admin if no users exist
+            if (!localStorage.getItem('mockUsersDB')) {
+                const defaultUsers = {
+                    "admin@harvest.com": "987654321"
+                };
+                localStorage.setItem('mockUsersDB', JSON.stringify(defaultUsers));
+                console.log("Mock Auth: Default admin created (admin@harvest.com / 987654321)");
+            }
         }
 
         onAuthStateChanged(callback) {
             this.listeners.push(callback);
-            callback(this.user); // Trigger immediately
+            callback(this.currentUser); // Trigger immediately
             return () => this.listeners = this.listeners.filter(l => l !== callback);
         }
 
         async signInWithEmailAndPassword(email, password) {
-            // Accept any login for demo purposes
-            this.user = { email: email, uid: "mock-uid-" + Date.now() };
-            localStorage.setItem('mockUser', JSON.stringify(this.user));
-            this.notify();
-            return { user: this.user };
+            const users = JSON.parse(localStorage.getItem('mockUsersDB')) || {};
+
+            if (users[email]) {
+                if (users[email] === password) {
+                    // Success
+                    this.currentUser = { email: email, uid: "mock-uid-" + email };
+                    this._saveSession();
+                    this.notify();
+                    return { user: this.currentUser };
+                } else {
+                    // Wrong password
+                    const err = new Error("Invalid password");
+                    err.code = 'auth/wrong-password';
+                    throw err;
+                }
+            } else {
+                // User not found
+                const err = new Error("User not found");
+                err.code = 'auth/user-not-found';
+                throw err;
+            }
         }
 
         async createUserWithEmailAndPassword(email, password) {
-            return this.signInWithEmailAndPassword(email, password);
+            // Strictly disable registration
+            const err = new Error("Registration is disabled. Only the main admin can log in.");
+            err.code = 'auth/operation-not-allowed';
+            throw err;
         }
 
         async signOut() {
-            this.user = null;
-            localStorage.removeItem('mockUser');
+            this.currentUser = null;
+            localStorage.removeItem('mockCurrentSession');
             this.notify();
         }
 
+        _saveSession() {
+            localStorage.setItem('mockCurrentSession', JSON.stringify(this.currentUser));
+        }
+
         notify() {
-            this.listeners.forEach(cb => cb(this.user));
+            this.listeners.forEach(cb => cb(this.currentUser));
         }
     }
 

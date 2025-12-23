@@ -46,19 +46,13 @@ function initAdmin() {
                 await window.auth.signInWithEmailAndPassword(email, password);
                 console.log("Logged in!");
             } catch (error) {
-                // If user not found, ask to register
-                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
-                    if (confirm("User not found. Do you want to create this account?")) {
-                        try {
-                            await window.auth.createUserWithEmailAndPassword(email, password);
-                            alert("Account created! You are now logged in.");
-                        } catch (regError) {
-                            alert("Registration failed: " + regError.message);
-                        }
-                    }
+                // Show clean error message
+                const errDiv = document.getElementById('login-error');
+                errDiv.style.display = 'block';
+
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+                    errDiv.textContent = "Invalid email or password.";
                 } else {
-                    const errDiv = document.getElementById('login-error');
-                    errDiv.style.display = 'block';
                     errDiv.textContent = "Error: " + error.message;
                     if (error.message.includes("api-key")) {
                         errDiv.textContent += " (Did you add your keys to firebase-config.js?)";
