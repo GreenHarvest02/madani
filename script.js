@@ -1,5 +1,3 @@
-import { db, collection, getDocs } from './firebase-config.js';
-
 // Fallback Static Data (used if DB connection fails)
 const staticRecipes = [
     {
@@ -12,26 +10,32 @@ const staticRecipes = [
         ingredients: ["1/2 cup Cannellini beans", "1 cup Cherry tomatoes", "1/2 Cucumber", "1/4 Red onion", "2 cups Mixed greens"],
         instructions: ["Pour dressing.", "Layer beans and veggies.", "Add greens.", "Shake well."]
     },
-    // ... keep a few examples for fallback ...
+    // ... additional static data ...
 ];
 
 let recipes = [];
 
 async function fetchRecipes() {
-    try {
-        const querySnapshot = await getDocs(collection(db, "recipes"));
-        if (!querySnapshot.empty) {
-            recipes = [];
-            querySnapshot.forEach((doc) => {
-                recipes.push({ id: doc.id, ...doc.data() });
-            });
-            console.log("Recipes loaded from Firebase");
-        } else {
-            console.log("No recipes in DB, using fallback");
+    // Check if Firebase DB is available
+    if (window.db) {
+        try {
+            const querySnapshot = await window.db.collection("recipes").get();
+            if (!querySnapshot.empty) {
+                recipes = [];
+                querySnapshot.forEach((doc) => {
+                    recipes.push({ id: doc.id, ...doc.data() });
+                });
+                console.log("Recipes loaded from Firebase");
+            } else {
+                console.log("No recipes in DB, using fallback");
+                recipes = staticRecipes;
+            }
+        } catch (error) {
+            console.warn("Error fetching from Firebase. Using static data.", error);
             recipes = staticRecipes;
         }
-    } catch (error) {
-        console.warn("Firebase not configured or error fetching. Using static data.", error);
+    } else {
+        console.warn("Firebase not loaded locally. Using static data.");
         recipes = staticRecipes;
     }
     renderRecipes('italian');

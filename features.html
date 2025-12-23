@@ -38,9 +38,10 @@
             <a href="index.html" class="logo">Harvest<span>Bottle</span>.</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="features.html" class="active-link">Features</a></li>
-                <li><a href="recipes.html">Harvest Recipes</a></li>
-                <li><a href="buy.html" class="btn-nav">Buy on Amazon</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="buy.html">Shop</a></li>
+                <li><a href="admin.html">Admin</a></li>
             </ul>
             <div class="burger-menu"><i data-lucide="menu"></i></div>
         </div>
@@ -123,7 +124,12 @@
         </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
     <script>
         lucide.createIcons();
     </script>
