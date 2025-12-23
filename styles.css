@@ -677,3 +677,110 @@ footer {
     transform: rotate(0deg) scale(1.02) translateY(-10px);
     box-shadow: 0 30px 60px rgba(0,0,0,0.25);
 }
+
+/* Mobile Navigation Button */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--primary);
+    z-index: 2000;
+}
+
+/* Mobile Menu Overlay */
+.nav-mobile-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: var(--white);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1500;
+    padding: 80px 30px;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-mobile-overlay.active {
+    right: 0;
+}
+
+.nav-mobile-links a {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-mobile-links a.active-link {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Contact Section in Footer */
+.footer-contact {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+}
+
+.contact-item i {
+    color: var(--primary);
+    width: 20px;
+}
+
+.btn-email {
+    margin-top: 15px;
+    background: var(--accent);
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-email:hover {
+    background: #c39263;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+}
+

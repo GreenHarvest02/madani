@@ -7,6 +7,15 @@
     <title>Harvest Bottle | Freshness on the Go</title>
     <meta name="description"
         content="The ultimate bottle for your daily harvest. Eat fresh, healthy food at work or on the go.">
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Harvest Bottle | Freshness on the Go">
+    <meta property="og:description"
+        content="Pack fresh salads, fruits, and meals for work or adventure. Eat clean, anywhere.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80">
+    <meta property="og:url" content="https://madani-harvest.github.io/">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥗</text></svg>">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +42,22 @@
                 <li><a href="recipes.html">Harvest Recipes</a></li>
                 <li><a href="buy.html" class="btn-nav">Buy on Amazon</a></li>
             </ul>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+        <div class="nav-mobile-overlay">
+            <div class="nav-mobile-links">
+                <a href="index.html" class="active-link">Home</a>
+                <a href="features.html">Features</a>
+                <a href="recipes.html">Harvest Recipes</a>
+                <a href="buy.html">Buy on Amazon</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header id="home" class="hero">
         <div class="container hero-container">
-            <div class="hero-content">
+            <div class="hero-content reveal">
                 <span class="badge">New Release</span>
                 <h1>Nature's Freshness, <br><em>In Your Pocket.</em></h1>
                 <p>The premium bottle designed for your daily harvest. Pack fresh salads, fruits, and meals for work or
@@ -62,12 +80,29 @@
     </header>
 
     <footer>
-        <div class="container footer-content">
+        <div class="container footer-content reveal">
             <div class="footer-logo">Harvest<span>Bottle</span>.</div>
-            <p>&copy; 2025 Harvest Bottle. All rights reserved.</p>
+
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <i data-lucide="phone"></i> <span>+213 674 94 11 20</span>
+                </div>
+                <div class="contact-item">
+                    <i data-lucide="mail"></i> <span>info@harvest.com</span>
+                </div>
+                <a href="mailto:info@harvest.com" class="btn-email">Send us Email <i data-lucide="send"></i></a>
+            </div>
+
+            <div class="footer-socials" style="margin-top: 25px; display: flex; justify-content: center; gap: 15px;">
+                <a href="#"><i data-lucide="instagram"></i></a>
+                <a href="#"><i data-lucide="facebook"></i></a>
+                <a href="#"><i data-lucide="twitter"></i></a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2025 Harvest Bottle. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
         lucide.createIcons();
     </script>

@@ -234,8 +234,32 @@ if (tabs.length > 0) {
 }
 
 // Initial Render
-document.addEventListener('DOMContentLoaded', () => {
-    if (recipeGrid) {
-        renderRecipes('italian');
-    }
-});
+if (recipeGrid) {
+    renderRecipes('italian');
+}
+
+
+/* Mobile Navigation Logic */
+const burger = document.querySelector('.burger-menu');
+const navMobile = document.querySelector('.nav-mobile-overlay');
+
+if (burger) {
+    burger.addEventListener('click', () => {
+        navMobile.classList.toggle('active');
+        burger.innerHTML = navMobile.classList.contains('active') ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+        lucide.createIcons();
+    });
+}
+
+/* Scroll Reveal Animation */
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.15 });
+
+revealElements.forEach(el => revealObserver.observe(el));
