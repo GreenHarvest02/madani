@@ -229,17 +229,7 @@ img {
     justify-content: center;
 }
 
-.blob {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: #ecebe4;
-    border-radius: 50%;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 
 .floating-img {
     animation: float 6s ease-in-out infinite;
@@ -529,6 +519,13 @@ footer {
     .feature-showcase {
         flex-direction: column;
         text-align: center;
+    }
+
+
+
+    .hero-image {
+        order: -1;
+        margin-bottom: 40px;
     }
 }
 
