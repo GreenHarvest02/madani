@@ -698,8 +698,9 @@ footer {
     object-fit: cover;
 }
 
-transform: rotate(0deg) scale(1.02) translateY(-10px);
-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+.hero-photo:hover {
+    transform: rotate(0deg) scale(1.02) translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
 }
 
 .hero-video {
