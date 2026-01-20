@@ -1,16 +1,145 @@
 // Fallback Static Data (used if DB connection fails)
 const staticRecipes = [
+    // Italian Recipes
     {
-        id: 1,
-        title: "Tuscan Mason Jar Salad",
+        id: "it-1",
+        title: "Classic Caprese Jar",
         category: "italian",
-        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600",
-        calories: "350 kcal",
-        time: "10 min",
-        ingredients: ["1/2 cup Cannellini beans", "1 cup Cherry tomatoes", "1/2 Cucumber", "1/4 Red onion", "2 cups Mixed greens"],
-        instructions: ["Pour dressing.", "Layer beans and veggies.", "Add greens.", "Shake well."]
+        image: "https://images.unsplash.com/photo-1529312266912-b33cf6227e24?auto=format&fit=crop&q=80&w=800",
+        calories: "280 kcal",
+        time: "5 min",
+        ingredients: [
+            "2 tbsp Balsamic Glaze (bottom)",
+            "1 cup Cherry Tomatoes, halved",
+            "1 cup Mozzarella Pearls",
+            "1/2 cup Fresh Basil Leaves",
+            "1 cup Mixed Greens (top)"
+        ],
+        instructions: [
+            "Pour balsamic glaze into the bottom of the jar.",
+            "Layer tomatoes, then mozzarella.",
+            "Add fresh basil leaves preventing them from touching the dressing.",
+            "Pack mixed greens to the top.",
+            "Shake vigorously before eating."
+        ]
     },
-    // ... additional static data ...
+    {
+        id: "it-2",
+        title: "Pesto Pasta Power",
+        category: "italian",
+        image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&q=80&w=800",
+        calories: "450 kcal",
+        time: "15 min",
+        ingredients: [
+            "2 tbsp Basil Pesto",
+            "1 cup Cooked Fusilli Pasta",
+            "1/4 cup Pine Nuts",
+            "1/4 cup Cherry Tomatoes",
+            "1/2 cup Arugula",
+            "Shaved Parmesan Cheese"
+        ],
+        instructions: [
+            "Spoon pesto into the bottom.",
+            "Add tomatoes and pine nuts.",
+            "Layer the cooked pasta.",
+            "Top with arugula and parmesan cheese.",
+            "Mix well when ready to serve."
+        ]
+    },
+    {
+        id: "it-3",
+        title: "Mediterranean Quinoa",
+        category: "italian",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800",
+        calories: "320 kcal",
+        time: "12 min",
+        ingredients: [
+            "2 tbsp Lemon Vinaigrette",
+            "1/2 cup Cucumber, diced",
+            "1/3 cup Kalamata Olives",
+            "1/2 cup Quinoa, cooked",
+            "1/4 cup Feta Cheese",
+            "1/2 cup Spinach"
+        ],
+        instructions: [
+            "Add vinaigrette first.",
+            "Layer cucumbers and olives to marinate.",
+            "Add quinoa as the substantial layer.",
+            "Top with feta and spinach.",
+            "Enjoy chilled."
+        ]
+    },
+
+    // American Recipes
+    {
+        id: "us-1",
+        title: "Cowboy Cobb Jar",
+        category: "american",
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800",
+        calories: "480 kcal",
+        time: "15 min",
+        ingredients: [
+            "2 tbsp Ranch Dressing",
+            "1/2 cup Grilled Chicken, diced",
+            "1 Hard-boiled Egg, chopped",
+            "2 slices Bacon, crumbled",
+            "1/4 cup Blue Cheese",
+            "1 cup Romaine Lettuce"
+        ],
+        instructions: [
+            "Dressing goes in first.",
+            "Add chicken and heavier proteins.",
+            "Layer egg and bacon.",
+            "Fill the rest with vibrant Romaine lettuce.",
+            "Shake to coat evenly."
+        ]
+    },
+    {
+        id: "us-2",
+        title: "Southwest Fiesta",
+        category: "american",
+        image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&q=80&w=800",
+        calories: "410 kcal",
+        time: "10 min",
+        ingredients: [
+            "2 tbsp Chipotle Dressing",
+            "1/2 cup Black Beans, rinsed",
+            "1/2 cup Corn Kernel",
+            "1/4 cup Red Onion",
+            "1/2 cup Grilled Chicken",
+            "1 cup Iceberg Lettuce"
+        ],
+        instructions: [
+            "Start with the spicy dressing.",
+            "Layer beans, corn, and onion.",
+            "Add the chicken.",
+            "Top with crisp iceberg lettuce & tortilla strips (optional).",
+            "Shake and enjoy!"
+        ]
+    },
+    {
+        id: "us-3",
+        title: "Rainbow Veggie Crunch",
+        category: "american",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800", // Reusing a nice salad image
+        calories: "220 kcal",
+        time: "8 min",
+        ingredients: [
+            "2 tbsp Hummus or Vinaigrette",
+            "1/2 cup Carrots, shredded",
+            "1/2 cup Red Bell Pepper",
+            "1/2 cup Cucumber",
+            "1/4 cup Sunflower Seeds",
+            "1 cup Kale or Spinach"
+        ],
+        instructions: [
+            "Hummus or dressing at the bottom.",
+            "Layer hard veggies (carrots, peppers).",
+            "Add cucumbers and seeds.",
+            "Stuff the top with kale.",
+            "Healthy and crunchy!"
+        ]
+    }
 ];
 
 let recipes = [];
@@ -61,7 +190,7 @@ function renderRecipes(filter = 'italian') {
         card.innerHTML = `
             <div class="recipe-img" style="background-image: url('${recipe.image}')"></div>
             <div class="recipe-content">
-                <span class="recipe-tag">${recipe.category} Style</span>
+                <span class="recipe-tag">${recipe.category.charAt(0).toUpperCase() + recipe.category.slice(1)} Style</span>
                 <h3 class="recipe-title">${recipe.title}</h3>
                 <div class="recipe-meta">
                     <span><i data-lucide="clock"></i> ${recipe.time}</span>
