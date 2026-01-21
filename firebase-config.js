@@ -24,13 +24,7 @@ if (isConfigured && typeof firebase !== 'undefined') {
     // --- OFFLINE / MOCK MODE ---
     console.warn("Using Mock Firebase (Offline Mode) - Data saved to LocalStorage");
 
-    // Add a visual indicator for Offline Mode
-    window.addEventListener('DOMContentLoaded', () => {
-        const banner = document.createElement('div');
-        banner.style = "background: #fff3cd; color: #856404; text-align: center; padding: 5px; font-size: 0.8rem; border-bottom: 1px solid #ffeeba;";
-        banner.innerHTML = "<b>Demo Mode:</b> Running offline. Data is saved to your browser.";
-        document.body.prepend(banner);
-    });
+
 
     // 1. Mock Auth
     class MockAuth {
